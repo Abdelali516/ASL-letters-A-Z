@@ -1,6 +1,11 @@
 import os
 import pandas as pd
 import numpy as np
+from sklearn.preprocessing import LabelEncoder
+from keras.utils import to_categorical
+from sklearn.model_selection import train_test_split
+from keras.models import Sequential
+from keras.layers import Dense,Dropout
 
 folder="/home/abdelali/Downloads/sign_language_landmarks"
 
@@ -16,19 +21,12 @@ for files in os.listdir(folder):
 x=np.array(coordinates,dtype=np.float32)
 y=np.array(labels)
 
-from sklearn.preprocessing import LabelEncoder
-from keras.utils import to_categorical
 
 le=LabelEncoder()
 y_encoded=le.fit_transform(y)
 y_categorical=to_categorical(y_encoded)
 
-from sklearn.model_selection import train_test_split
-
 x_train,x_test,y_train,y_test=train_test_split(x,y_categorical,test_size=0.3,random_state=42)
-
-from keras.models import Sequential
-from keras.layers import Dense,Dropout
 
 model=Sequential([
     Dense(128,activation='relu',input_shape=(63,)),

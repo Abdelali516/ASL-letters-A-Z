@@ -50,7 +50,7 @@ while cap.isOpened():
     
     if current_letter and not typed and (now-current_time)>=1:
         sentence+=current_letter
-        print('User:',sentence,end="\r",flush=True)
+        print('User:',sentence.title(),end="\r",flush=True)
         typed=True
     
     if sentence and (now-last_hand_time)>=0.5:

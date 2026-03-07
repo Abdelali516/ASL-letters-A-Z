@@ -2,7 +2,7 @@ import os
 import pandas as pd
 import numpy as np
 
-folder="/home/abdelali/Downloads/sign_language" # the name and location of the folder where i saved the dataset of eahc letter (A-Z)
+folder="/home/abdelali/Downloads/sign_language" # the name and location of the folder where i saved the dataset of each letter (A-Z)
 
 coordinates=[]
 labels=[]

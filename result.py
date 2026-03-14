@@ -56,7 +56,7 @@ while cap.isOpened():
     if sentence and (now-last_hand_time)>=0.5:
         print(" ",end="",flush=True)
 
-    if sentence and (now-last_hand_time)>=1:
+    elif sentence and (now-last_hand_time)>=1:
         ai_model='llama3.1:8b'
         print("\nBot:",end="",flush=True)
         function(ai_model,sentence)

@@ -1,8 +1,9 @@
 import cv2
 import mediapipe as mp
 import csv 
+import os
 
-file="(letter)_landmarks.csv" # replace "letter" by the letter you want to save it's landmarl
+CSV_PATH = os.path.expanduser("~/Downloads/letter_a.csv")
 
 cap=cv2.VideoCapture(0)
 hands=mp.solutions.hands.Hands()
@@ -13,10 +14,13 @@ while not cap.isOpened():
     exit()
 
 while True:
-    labels=[]
+   
     letter=input("Enter the correspending letter for the hand sign you will do:").lower().strip()
     if letter=="exit":
         break
+
+    labels=[]
+
     while cap.isOpened():
         ret,frame=cap.read()
         if not ret:
@@ -42,10 +46,10 @@ while True:
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
     
-    with open(file,"a") as f:
+    with open(CSV_PATH,"a") as f:
         writer=csv.writer(f)
         writer.writerows(labels)
 
 cap.release()
 cv2.destroyAllWindows()
-hands.close
+hands.close()

@@ -3,7 +3,7 @@ import mediapipe as mp
 import csv 
 import os
 
-CSV_PATH = os.path.expanduser("~/Downloads/letter_a.csv")
+CSV_PATH = os.path.expanduser("~/Downloads/letter_z.csv")
 
 cap=cv2.VideoCapture(0)
 hands=mp.solutions.hands.Hands()
@@ -52,4 +52,4 @@ while True:
 
 cap.release()
 cv2.destroyAllWindows()
-hands.close()
+hands.close

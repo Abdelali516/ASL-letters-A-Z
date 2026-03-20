@@ -2,7 +2,7 @@ import os
 import pandas as pd
 import numpy as np
 
-folder="/home/abdelali/Downloads/sign_language" # the name and location of the folder where i saved the dataset of each letter (A-Z)
+folder="/home/abdelali/Downloads/sign_language_landmarks" # the name and location of the folder where i saved the dataset of eahc letter (A-Z)
 
 coordinates=[]
 labels=[]
@@ -55,4 +55,4 @@ history=model.fit(
 loss, acc=model.evaluate(x_test,y_test)
 print(f"Test accuracy: {acc*100:.2f}%")
 
-model.save("sign_language_model")
+model.save("/home/abdelali/Downloads/Sign language project/creating/languages.keras")

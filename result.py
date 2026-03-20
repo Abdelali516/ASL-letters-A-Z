@@ -7,7 +7,7 @@ import time
 import string
 from personai import function
 
-model=load_model("sign_language_model")
+model=load_model("/home/abdelali/Downloads/Sign language project/creating/languages.keras")
 le=LabelEncoder()
 le.fit(list(string.ascii_lowercase))
 
@@ -50,17 +50,24 @@ while cap.isOpened():
     
     if current_letter and not typed and (now-current_time)>=1:
         sentence+=current_letter
-        print('User:',sentence.title(),end="\r",flush=True)
+        print('User:',sentence,end="\r",flush=True)
         typed=True
     
     if sentence and (now-last_hand_time)>=0.5:
-        print(" ",end="",flush=True)
+        print("",end="",flush=True)
 
-    elif sentence and (now-last_hand_time)>=1:
+    if sentence and (now-last_hand_time)>=1:
         ai_model='llama3.1:8b'
         print("\nBot:",end="",flush=True)
         function(ai_model,sentence)
+
+        if sentence=="bye":
+            break
+
         sentence=""
+
+    
+    
 
     cv2.imshow("Video",frame)
 
